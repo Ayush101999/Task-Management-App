@@ -34,7 +34,7 @@ The Task Management application is a web-based tool that allows users to manage 
 1. **Clone the repository :**
  Replace `your-username` with your GitHub username.
    ```sh
-   git clone https://github.com/your-username/task-management-app.git
+   git clone https://github.com/Ayush101999/Task-Management-App.git
    cd task-management-app
    ```
 2. **Install the dependencies :**
