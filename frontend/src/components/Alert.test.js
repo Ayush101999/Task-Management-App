@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import Alert from "./Alert"
 
-
+/* Test cases for Alert component */
 test('Alert should come after adding the task', () => {
   render(<Alert alert={{msg: "Task Added SucessFully", type: "success"}}/>)
   const alertElement = screen.getByText(/Task Added SucessFully/i)

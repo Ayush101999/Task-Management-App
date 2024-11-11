@@ -1,12 +1,14 @@
 import { useState } from "react";
 import NoteContext from "./noteContext";
 
+/* NoteState component */
+/* This component is used to manage the state of the notes. */
 const NoteState = (props) => {
   const host = "http://localhost:5000/api/notes";
   const notesIntial = [];
-
   const [notes, setNotes] = useState(notesIntial);
 
+  /* Function to get all the notes */
   const getNotes = async () => {
     //api call
     const url = `${host}/fetchallnotes`;
@@ -20,6 +22,7 @@ const NoteState = (props) => {
     setNotes(json);
   };
 
+  /* Function to add a note */
   const addNote = async (title, status, desc, date, priority) => {
     //api call
     const url = `${host}/addnote`;
@@ -39,7 +42,7 @@ const NoteState = (props) => {
     setNotes(notes.concat(json));
   };
 
-  // Delete a note
+  /* Function to delete a note */
   const deleteNote = async (id) => {
     const url = `${host}/deletenote/${id}`;
     const response = await fetch(url, {
@@ -56,7 +59,8 @@ const NoteState = (props) => {
     });
     setNotes(newNotes);
   };
-  // edit a note
+  
+  /* Function to edit a note */
   const editNote = async (id, title, status, desc, date, priority) => {
     //api call
     const url = `${host}/updatenote/${id}`;
@@ -85,6 +89,7 @@ const NoteState = (props) => {
       }
     }
   };
+  /* Return the NoteContext.Provider */
   return (
     <NoteContext.Provider
       value={{ notes, getNotes, setNotes, addNote, deleteNote, editNote }}

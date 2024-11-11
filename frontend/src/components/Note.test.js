@@ -14,6 +14,7 @@ const notes = [
   { _id: '3', title: 'Test Note 3', status: 'Done', desc: 'Description 3', date: '2023-10-03', priority: 'high' },
 ];
 
+/* Test cases for Note component */
 const renderNote = () => {
   return render(
     <NoteContext.Provider value={{ notes, getNotes: mockGetNotes, editNote: mockEditNote }}>

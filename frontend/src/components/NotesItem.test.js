@@ -17,6 +17,7 @@ const note = {
   priority: 'low'
 };
 
+/* Test cases for NotesItem component */
 const renderNotesItem = () => {
   return render(
     <NoteContext.Provider value={{ deleteNote: mockDeleteNote }}>

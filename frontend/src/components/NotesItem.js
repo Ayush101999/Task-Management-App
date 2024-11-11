@@ -1,15 +1,21 @@
 import React, { useContext } from 'react'
 import NoteContext from "../context/noteContext";
 
+/* NotesItem component */
+/* This component is used to display the notes on the page. */
 const NotesItem = (props) => {
 
   const context = useContext(NoteContext);
   const { note, updateNote } = props;
   const {deleteNote} = context;
+
+  /* Function to delete the note */
   const handleDelete = ()=>{
     deleteNote(note._id);
     props.showAlert("Deleted Successfully","success");
   }
+
+  /* switch case to change the color of the card based on the priority */
   let cardColor;
   switch(note.priority) {
     case 'low':

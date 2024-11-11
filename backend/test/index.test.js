@@ -2,7 +2,7 @@ const server = require('../index'); // Adjust the path as necessary
 const chai = require('chai');
 const expect = chai.expect;
 
-
+/* Test suite for the server */
 describe('Server', () => {
   it('should start the server and listen on the specified port', (done) => {
     expect(server.address().port).to.equal(5000);

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import NoteContext from "../context/noteContext";
 import "../App.css";
 
+/* Home component is used to add the note to the database and also to the UI */
 const Home = (props) => {
   const intialNote = {
     title: "",
@@ -14,6 +15,7 @@ const Home = (props) => {
   const context = useContext(NoteContext);
   const {addNote} = context;
 
+  /* handleclick function is used to add the note to the database and also to the UI */
   const handleclick = async (e) => {
     e.preventDefault();
     let success = await addNote(note.title, note.status, note.desc, note.date, note.priority);
@@ -24,9 +26,9 @@ const Home = (props) => {
       props.showAlert("Title Already Exists", "danger")
     }
     setNote(intialNote);
-    //props.showAlert("Added Successfully","success");
   };
 
+  /* onchange function is used to set the value of the input field to the state */
   const onchange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };

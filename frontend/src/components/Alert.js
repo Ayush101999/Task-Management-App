@@ -1,5 +1,7 @@
 import React from 'react'
 
+/* Alert component */
+/* This component is used to display alert messages on the screen */
 export default function Alert(props) {
   return (
     <>

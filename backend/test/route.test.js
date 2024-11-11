@@ -11,22 +11,24 @@ const app = express();
 app.use(express.json());
 app.use('/api/notes', route);
 
+/* Test suite for the Notes API */
 describe('Notes API', () => {
   before(async () => {
-    // Connect to a test database
+    /* Connect to a test database */
     await connectToMongo('mongodb://127.0.0.1:27017/taskManagementTest');
   });
 
   after(async () => {
-    // Disconnect from the test database
+    /* Disconnect from the test database */
     await mongoose.connection.close();
   });
 
   beforeEach(async () => {
-    // Clear the test database before each test
+    /* Clear the test database before each test */
     await Note.deleteMany({});
   });
 
+  /* Test the GET /api/notes/fetchallnotes route */
   describe('GET /api/notes/fetchallnotes', () => {
     it('should return all notes', async () => {
       const note = new Note({
@@ -46,6 +48,7 @@ describe('Notes API', () => {
     });
   });
 
+  /* Test the POST /api/notes/addnote route */
   describe('POST /api/notes/addnote', () => {
     it('should add a new note', async () => {
       const noteData = {
@@ -84,6 +87,7 @@ describe('Notes API', () => {
     });
   });
 
+  /* Test the PUT /api/notes/updatenote/:id route */
   describe('PUT /api/notes/updatenote/:id', () => {
     it('should update an existing note', async () => {
       const note = new Note({
@@ -111,6 +115,7 @@ describe('Notes API', () => {
     });
   });
 
+  /* Test the DELETE /api/notes/deletenote/:id route */
   describe('DELETE /api/notes/deletenote/:id', () => {
     it('should delete an existing note', async () => {
       const note = new Note({

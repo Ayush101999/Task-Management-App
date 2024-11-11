@@ -2,8 +2,9 @@ const sinon = require('sinon');
 const chai = require('chai');
 const expect = chai.expect;
 const mongoose = require('mongoose');
-const connectToMongo = require('../db'); // Adjust the path as necessary
+const connectToMongo = require('../db'); 
 
+/* Test suite for connectToMongo */
 describe('connectToMongo', () => {
   let connectStub;
 

@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+/* 
+Schema for notes
+title : title of the task note
+status : status of the task note
+desc : description of the task note
+date : date of the task note
+priority : priority of the task note
+*/
 const notesSchema = new Schema({
    title : {
     type : String,
@@ -23,4 +31,4 @@ const notesSchema = new Schema({
    } 
   });
 
-module.exports = mongoose.model('notes',notesSchema);
+module.exports = mongoose.model('notes', notesSchema);

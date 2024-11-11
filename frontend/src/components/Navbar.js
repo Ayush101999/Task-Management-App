@@ -1,5 +1,7 @@
 import React from "react";
 
+/* Navbar component */
+/* This component is used to display the navbar at the top of the page. */
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

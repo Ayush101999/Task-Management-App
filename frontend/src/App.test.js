@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
+/* Test cases for App component */
 test('renders Navbar component', () => {
   render(<App />);
   const navbarElement = screen.getByText(/Task Management/i);

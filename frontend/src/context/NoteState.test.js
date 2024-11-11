@@ -8,6 +8,7 @@ const mockFetch = jest.fn();
 
 global.fetch = mockFetch;
 
+/* Test cases for NoteState component */
 const renderNoteState = (children) => {
   return render(
     <NoteState>

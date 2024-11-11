@@ -7,6 +7,7 @@ import NoteContext from "../context/noteContext";
 const mockAddNote = jest.fn();
 const mockShowAlert = jest.fn();
 
+/* renderHome function is used to render the Home component with the NoteContext.Provider */
 const renderHome = () => {
   return render(
     <NoteContext.Provider value={{ addNote: mockAddNote }}>
@@ -15,6 +16,7 @@ const renderHome = () => {
   );
 };
 
+/* Test cases for Home component */
 test("renders Home component", () => {
   renderHome();
   const titleInput = screen.getByPlaceholderText(/Enter The Title/i);

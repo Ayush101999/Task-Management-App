@@ -3,6 +3,8 @@ import NotesItem from "./NotesItem";
 import NoteContext from "../context/noteContext";
 import "../App.css";
 
+/* Note component */
+/* This component is used to display the notes on the page. */
 const Note = (props) => {
   const context = useContext(NoteContext);
   const ref = useRef(null);
@@ -18,58 +20,72 @@ const Note = (props) => {
   };
 
   let intialfilter = "All";
+  /* useState hooks */
   const [note, setNote] = useState(intialEditNote);
-  const [filter, setFilter] = useState(intialfilter)
-  const [filterByTitle, setFilterByTitle] = useState("")
+  const [filter, setFilter] = useState(intialfilter);
+  const [filterByTitle, setFilterByTitle] = useState("");
 
+  /* useEffect hooks */
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line
   }, []);
 
-  const updateNote = (currentNote)=>{
+  /* Function to open the popup with current details */
+  const updateNote = (currentNote) => {
     ref.current.click();
     setNote({
-      id : currentNote._id,
-      etitle : currentNote.title,
-      estatus  : currentNote.status,
-      edesc : currentNote.desc,
-      edate : currentNote.date,
-      epriority : currentNote.priority
+      id: currentNote._id,
+      etitle: currentNote.title,
+      estatus: currentNote.status,
+      edesc: currentNote.desc,
+      edate: currentNote.date,
+      epriority: currentNote.priority,
     });
-  }
+  };
 
-  const handleclick = async (e)=>{
+  /* This function edit the note */
+  const handleclick = async (e) => {
     e.preventDefault();
-    let success = await editNote(note.id,note.etitle,note.estatus,note.edesc,note.edate,note.epriority)
-    if(success != 'error'){
-      props.showAlert("Updated Successfully","success");
+    let success = await editNote(
+      note.id,
+      note.etitle,
+      note.estatus,
+      note.edesc,
+      note.edate,
+      note.epriority
+    );
+    if (success != "error") {
+      props.showAlert("Updated Successfully", "success");
+    } else {
+      props.showAlert("Error Ocurred", "danger");
     }
-    else {
-      props.showAlert("Error Ocurred", "danger")
-    }
-    refClose.current.click()
-  }
+    refClose.current.click();
+  };
 
-  const filteredNotes = notes.filter(note =>{ 
-    // filter === 'All' || note.status === filter
-
-    const matchesStatus = filter === 'All' || note.status === filter;
-    const matchesSearch = note.title.toLowerCase().includes(filterByTitle.toLowerCase())
+  /* Function to filter the notes */
+  const filteredNotes = notes.filter((note) => {
+    const matchesStatus = filter === "All" || note.status === filter;
+    const matchesSearch = note.title
+      .toLowerCase()
+      .includes(filterByTitle.toLowerCase());
     return matchesStatus && matchesSearch;
-});
+  });
 
-  const onchange = (e)=>{
-    setNote({...note,[e.target.name]:e.target.value});
-  }
+  /* Function to handle the change in input fields */
+  const onchange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
 
-  const onchangeFilter = (e)=>{
-    setFilter(e.target.value)
-  }
+  /* Function to handle the change in filter */
+  const onchangeFilter = (e) => {
+    setFilter(e.target.value);
+  };
 
-  const onchangeFilterByTitle = (e)=>{
-    setFilterByTitle(e.target.value)
-  }
+  /* Function to handle the change in filter by title */
+  const onchangeFilterByTitle = (e) => {
+    setFilterByTitle(e.target.value);
+  };
 
   return (
     <div className="container my-5">
@@ -205,44 +221,42 @@ const Note = (props) => {
         Tasks List
       </h1>
       <div className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid mx-3">
-        <i
-          className="fa-solid fa-computer mx-3 fa-2x"
-          style={{ filter: "invert(1)" }}
-        ></i>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <form className="d-flex mx-5 my-1" role="search" id="filter-box">
-                    <span id="filter-text">Filter By </span>
-                    <select
-                      className="form-control me-2"
-                      name="filter"
-                      placeholder="Filter By"
-                      value = {filter}
-                      onChange={onchangeFilter}
-                    >
-                      <option value="All" >
-                        All
-                      </option>
-                      <option value="To Do">To Do</option>
-                      <option value="In Progress">In Progress</option>
-                      <option value="Done">Done</option>
-                    </select>
-          </form>
-          <form className="d-flex mx-5 my-1" role="search">
-            <span id="filter-text2">Search By </span>
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search Using Title"
-              aria-label="Search"
-              value = {filterByTitle}
-              onChange={onchangeFilterByTitle}
-            />
-          </form>
+        <div className="container-fluid mx-3">
+          <i
+            className="fa-solid fa-computer mx-3 fa-2x"
+            style={{ filter: "invert(1)" }}
+          ></i>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <form className="d-flex mx-5 my-1" role="search" id="filter-box">
+              <span id="filter-text">Filter By </span>
+              <select
+                className="form-control me-2"
+                name="filter"
+                placeholder="Filter By"
+                value={filter}
+                onChange={onchangeFilter}
+              >
+                <option value="All">All</option>
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+              </select>
+            </form>
+            <form className="d-flex mx-5 my-1" role="search">
+              <span id="filter-text2">Search By </span>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search Using Title"
+                aria-label="Search"
+                value={filterByTitle}
+                onChange={onchangeFilterByTitle}
+              />
+            </form>
+          </div>
         </div>
       </div>
-    </div>
       <div className="container my-2">
         {filteredNotes.length === 0 && "No Tasks to display"}
       </div>
