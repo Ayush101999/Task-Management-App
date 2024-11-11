@@ -26,8 +26,8 @@ The Task Management application is a web-based tool that allows users to manage 
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- MongoDB
+- Node.js (v14 or higher) - [Download](https://nodejs.org/en/download/source-code)
+- MongoDB - [Download](https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.3-signed.msi)
 
 ### Installation
 
@@ -56,14 +56,19 @@ The Task Management application is a web-based tool that allows users to manage 
 
 ## Testing
 Run the following command to run the unit tests and generate the code coverage report.
+
+- Frontend Testing :
 ```sh
 cd frontend
 npm test
 ```
+![Frontend Testing](./screenshots/frontend_code_coverage.png)
+- Backend Testing :
 ```sh
 cd backend
 npm test
 npm run coverage
 ```
+![Backend Testing](./screenshots/backend_code_coverage.png)
 
 

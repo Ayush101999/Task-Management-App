@@ -13,9 +13,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
-    "both": "concurrently \"npm run start\" \"nodemon ../backend/index.js\" "
+    "both": "concurrently \"npm run start\" \"node ../backend/index.js\" "
   },
   "eslintConfig": {
     "extends": [
