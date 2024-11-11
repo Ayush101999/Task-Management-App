@@ -15,9 +15,19 @@ const Home = (props) => {
   const context = useContext(NoteContext);
   const {addNote} = context;
 
+  /* containsSpecialCharacters function is used to check if the string contains special characters */
+  function containsSpecialCharacters(str) {
+    const regex = /[^a-zA-Z0-9 ]/g;
+    return regex.test(str);
+  }
+
   /* handleclick function is used to add the note to the database and also to the UI */
   const handleclick = async (e) => {
     e.preventDefault();
+    if (containsSpecialCharacters(note.title) || containsSpecialCharacters(note.desc)) {
+      props.showAlert("Special Characters are not allowed", "danger");
+      return;
+    }
     let success = await addNote(note.title, note.status, note.desc, note.date, note.priority);
     if(success != 'error'){
       props.showAlert("Task Added SucessFully", "success")

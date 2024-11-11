@@ -41,15 +41,17 @@ The Task Management application is a web-based tool that allows users to manage 
    ```sh
    cd frontend
    npm install
+   cd ../
    ```
    ```sh
    cd backend
    npm install
+   cd ../
    ```
 3. **Start the application :**
    ```sh
    cd frontend
-   npm start both
+   npm run both
    ```
 4. **Open the browser :**
    Open the browser and go to `http://localhost:3000/` to view the application.

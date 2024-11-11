@@ -27,3 +27,10 @@
     margin-top: 4px;
     font-weight: bold;
 }
+
+/* Responsive design */
+@media (max-width: 564px) {
+    #home_form {
+        height: 500px;
+    }
+}
